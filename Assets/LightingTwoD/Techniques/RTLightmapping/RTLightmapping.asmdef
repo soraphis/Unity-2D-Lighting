@@ -1,0 +1,15 @@
+{
+    "name": "RTLightmapping",
+    "references": [
+        "GUID:34f0ea73c2b24cc428223708c7a1691a"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
