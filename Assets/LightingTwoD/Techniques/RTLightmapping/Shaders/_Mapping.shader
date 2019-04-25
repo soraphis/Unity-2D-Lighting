@@ -37,6 +37,21 @@ Shader "Soraphis/RTLM/Mapping"
 			ENDHLSL
         }
         
+        
+        Pass
+        {
+            HLSLPROGRAM
+			
+			#pragma target 3.5
+			
+			#pragma vertex LinePassVertex
+			#pragma fragment LinePassFragment
+			
+			#include "Mapping.hlsl"
+			
+			ENDHLSL
+        }
+        
 	}
 	
 

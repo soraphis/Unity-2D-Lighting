@@ -18,6 +18,7 @@ CBUFFER_START(UnityPerFrame)
     sampler2D   _ShadowTex;
 	float4x4    unity_MatrixVP;
     float4 		_LightPosition;
+    float4 		_LightAttenuation;
     float4 		_ShadowMapParams; // (slot uv space, slot clip space, 0, 0)
     float4 		_Color;	
 CBUFFER_END
@@ -40,6 +41,10 @@ int bit_set(float num, float bit){
     float m = pow(2, bit+1); // 1 << (bit+1)
     return int(fmod(num, m) >= m*0.5f);
 }
+
+//-------------------------------------------------------------------------------------
+//                                      Point and Spotlights
+//-------------------------------------------------------------------------------------
 
 VertexOutput PassVertex(VertexInput input){
     VertexOutput output;
@@ -73,17 +78,65 @@ VertexOutput PassVertex(VertexInput input){
 
 float4 PassFragment(VertexOutput input) : SV_Target{
     int s = input.data.y;
-    
-    //clip((s & _ShadowMapParams.z) -1); // check for cliping mask
     clip(s - 0.5f);
      
     float angle = input.data.x;
-    // if (AngleDiff(angle,_LightPosition.z) > _LightPosition.w)
-    //     return float4(0,0,0,0);
     
-    float2 realEnd = _LightPosition.xy + float2(cos(angle) * 10, sin(angle) * 10);
+    float range = _LightAttenuation.y;
+    float2 realEnd = _LightPosition.xy + float2(cos(angle) * range, sin(angle) * range);
     
     float t = Intersect(_LightPosition.xy, realEnd, input.edge.xy, input.edge.zw);
+    return t;
+}
+
+//-------------------------------------------------------------------------------------
+//                                      Line Lights
+//-------------------------------------------------------------------------------------
+
+VertexOutput LinePassVertex(VertexInput input){
+    VertexOutput output;
+    float2 lightLine = normalize(_LightPosition.zw - _LightPosition.xy);
+    
+    // float t1 = Intersect(_LightPosition.xy, _LightPosition.xy + lightNormal * 10, output.edge.xy, output.edge.zw) //fixme: 10 should be replaced with Light range
+    float start = dot(lightLine, _LightPosition.xy);
+    float end = dot(lightLine, _LightPosition.zw);
+    
+    output.edge = float4(input.vertex1.xy,input.vertex2.xy);
+    output.edge = lerp(output.edge,output.edge.zwxy,step(start,end));
+    
+    float t1 = (dot(lightLine, input.vertex1.xy) - start) / (end - start);
+    
+    // t1 is uv-space -> to clipspace:
+    float t2 = t1 * 2.0f/3; //for refit.hlsl
+    t2 = (t2 * 2) - 1; 
+        
+    output.vertex = float4(t2, _ShadowMapParams.y, 0.0f, 1.0f);
+    
+    int s = bit_set(_ShadowMapParams.z, input.color.r);
+    output.data = float2(t1, s); 
+	return output;
+}
+
+float4 LinePassFragment(VertexOutput input) : SV_Target{
+    int s = input.data.y;
+    //clip(s - 0.5f);
+    
+    float t1 = (input.data.x + 1) * 0.5f;
+    t1 *= 3.0f/2;
+    
+    clip(-(input.data.x > 1));
+    clip(-(input.data.x < 0));
+    
+    
+    float2 lightLine = _LightPosition.zw - _LightPosition.xy;
+    float2 lightNormal = normalize(float2(-lightLine.y, lightLine.x)); 
+    
+    float range = _LightAttenuation.y;
+    
+    float2 start = _LightPosition.xy + lightLine * t1;
+    float2 end = start + lightNormal * range; //fixme: 10 should be replaced with Light range
+    
+    float t = Intersect(start, end, input.edge.xy, input.edge.zw);
     return t;
 }
 

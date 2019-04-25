@@ -7,16 +7,16 @@ namespace LightingTwoD.Core {
 
 
     public abstract class Light2D : MonoBehaviour {
-    }
-
-    public abstract class Light2D<T> : Light2D where T : Light2D{
-        
         public enum Light2DType {
             Spot = 0,
             Global = 1,
             Point = 2,
-            Area = 3
+            Area = 3,
+            Line = 4,
         }
+    }
+
+    public abstract class Light2D<T> : Light2D where T : Light2D{
         
         //-------------------------------------------------------------------------------------
         //                                      Static/Constants
@@ -29,7 +29,10 @@ namespace LightingTwoD.Core {
         //                                      Serializable Variables
         //-------------------------------------------------------------------------------------
         public static List<T> Lights = new List<T>();
+        
+        [ConditionalEnum(nameof(SupportedLightTypes))]
         [SerializeField] protected Light2DType _lightType = Light2DType.Point;
+        
         [SerializeField] protected float _range = 10f;
         [SerializeField][Range(1, 179)] protected float _spotAngle = 45f;
         [SerializeField] protected float _intensity = 1f;
@@ -64,6 +67,11 @@ namespace LightingTwoD.Core {
         //                                      Member Functions
         //-------------------------------------------------------------------------------------
 
+        protected virtual bool SupportedLightTypes(Light2DType type)
+        {
+            return true;
+        }
+        
         public Vector4 LightData() {
             var angle = Mathf.Atan2(transform.right.y, transform.right.x);
             

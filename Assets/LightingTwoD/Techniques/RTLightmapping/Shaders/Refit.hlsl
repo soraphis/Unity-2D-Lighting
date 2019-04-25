@@ -26,8 +26,6 @@ Appdata PassVertex(Appdata input){
     return input;
 }
 
-
-
 float4 PassFragment(Appdata input) : SV_Target{
     float u = input.texcoords.x * 2.0f / 3.0f;
     float v = input.texcoords.y;

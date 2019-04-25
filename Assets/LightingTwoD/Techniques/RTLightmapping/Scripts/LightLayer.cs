@@ -51,6 +51,7 @@ namespace LightingTwoD.Techniques.RTLightmapping {
 
         private void LateUpdate() {
             if(!Application.isPlaying && _geometry == null) Init(); // possible in EditMode
+            if(!Application.isPlaying) GeometryCollector.CollectStatic(_geometry, _staticData); 
             GeometryCollector.CollectDynamic(_geometry, _staticData);
             
             _buffer.Clear();
@@ -60,7 +61,12 @@ namespace LightingTwoD.Techniques.RTLightmapping {
             int slot = 0;
             foreach (var light2D in Light2D_LM.Lights) {
                 var properties = light2D.GetMaterialProperties(slot, (int)maxShadowCastingLights, _shadowMapFinalTexture);
-                _buffer.DrawMesh(_geometry, Matrix4x4.identity, _material, 0, 0, properties);
+
+                int shaderPass = light2D.LightType == Light2D.Light2DType.Line ? 2 : 0; 
+                
+                _buffer.DrawMesh(_geometry, Matrix4x4.identity, _material, 0, shaderPass, properties);
+                
+                
                 ++slot;
                 if (slot >= (int)maxShadowCastingLights) break;
             }
