@@ -1,155 +1,210 @@
-﻿using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Object = UnityEngine.Object;
 
-namespace LightingTwoD.Core {
-    public static class GeometryCollector {
-        public class StaticData {
-            public List<Vector3> staticEdges = new List<Vector3>();
-            public List<Vector2> staticUvs = new List<Vector2>();
-            public List<Color> staticColors = new List<Color>();
+namespace LightingTwoD.Core
+{
+    public static class GeometryCollector
+    {
+        public class StaticData
+        {
+            public readonly List<Vector3> StaticEdges = new List<Vector3>();
+            public readonly List<Vector2> StaticUvs = new List<Vector2>();
+            public readonly List<Color> StaticColors = new List<Color>();
         }
 
-        private static List<Vector3> edges = new List<Vector3>();
-        private static List<Vector2> uvs = new List<Vector2>();
-        private static List<Color> colors = new List<Color>();
-        private static int[] indices;
+        //-------------------------------------------------------------------------------------
+        //                       Static Caching Variables to reduce GC
+        //-------------------------------------------------------------------------------------
+        
+        private static List<Vector3> _edges = new List<Vector3>();
+        private static List<Vector2> _uvs = new List<Vector2>();
+        private static List<Color> _colors = new List<Color>();
+        private static int[] _indices;
 
-        public static void CollectStatic(Mesh mesh, StaticData data) {
+        private static List<Vector2> _physicShape;
+        
+        //-------------------------------------------------------------------------------------
+        //                                      Public Methods
+        //-------------------------------------------------------------------------------------
+        
+        
+        public static void CollectStatic(Mesh mesh, StaticData data)
+        {
             mesh.MarkDynamic();
-            data.staticEdges.Clear();
-            data.staticUvs.Clear();
-            data.staticColors.Clear();
+            data.StaticEdges.Clear();
+            data.StaticUvs.Clear();
+            data.StaticColors.Clear();
             // do what you have to do...
             var renderers = Object.FindObjectsOfType<Renderer>().ToList();
             renderers.RemoveAll(r => r is MeshRenderer); // we don't use those here
             renderers.RemoveAll(r => !r.gameObject.isStatic);
 
-            for (var i = renderers.Count - 1; i >= 0; i--) {
+            for (var i = renderers.Count - 1; i >= 0; i--)
+            {
                 var ren = renderers[i];
-                if (ren.gameObject == null) {
-                    // GO was deleted in runtime
-                    renderers.RemoveAt(i);
-                    continue;
+                if (ren.gameObject == null)
+                {
+                    continue; // GO was deleted in runtime
                 }
-
-                if (ren is SpriteRenderer) {
-                    Update_SpriteRenderer(ren as SpriteRenderer, data.staticEdges, data.staticColors, data.staticUvs);
-                } else if (ren is TilemapRenderer) {
-                    var collider = ren.GetComponent<TilemapCollider2D>();
-
-                    if (collider != null) {
-                        if (collider.usedByComposite) {
-                            Update_CompositeCollider(ren as TilemapRenderer, collider.composite, data.staticEdges, data.staticColors, data.staticUvs);
-                        } else {
-                            // todo: no support for tilemaps without composite collider
-                            // it would be way too inefficient 
-                        }
-                    }
-                }
+                Collect(ren, data.StaticEdges,data.StaticColors,  data.StaticUvs);
             }
         }
 
-        public static void CollectDynamic(Mesh mesh, StaticData data) {
+        
+
+        public static void CollectDynamic(Mesh mesh, StaticData data)
+        {
             mesh.Clear();
-            edges = data.staticEdges.ToList();
-            uvs = data.staticUvs.ToList();
-            colors = data.staticColors.ToList();
+            if (_edges.Count >= data.StaticEdges.Count)
+            {
+                _edges.RemoveRange(data.StaticEdges.Count, _edges.Count - data.StaticEdges.Count);
+                _uvs.RemoveRange(data.StaticUvs.Count, _uvs.Count - data.StaticUvs.Count);
+                _colors.RemoveRange(data.StaticColors.Count, _colors.Count - data.StaticColors.Count);
+            }
+            else
+            {
+                _edges = data.StaticEdges.ToList();
+                _uvs = data.StaticUvs.ToList();
+                _colors = data.StaticColors.ToList();
+            }
+
             var shadowcasters = Runtime2DShadowcaster.Instances;
 #if UNITY_EDITOR
-            if (!Application.isPlaying) {
+            if (!Application.isPlaying)
+            {
                 shadowcasters = Object.FindObjectsOfType<Runtime2DShadowcaster>().ToList();
             }
 #endif
-            foreach (var shadowcaster in shadowcasters) {
+            foreach (var shadowcaster in shadowcasters)
+            {
                 var ren = shadowcaster.renderer;
 
-                if (ren is SpriteRenderer) {
-                    Update_SpriteRenderer(ren as SpriteRenderer, edges, colors, uvs);
-                } else if (ren is TilemapRenderer) {
-                    var collider = shadowcaster.collider;
-                    if (collider == null) {
-                        continue;
-                    }
-
-                    if (collider.usedByComposite) {
-                        Update_CompositeCollider(ren as TilemapRenderer, collider.composite, edges, colors, uvs);
-                    } else {
-                        // todo: no support for tilemaps without composite collider
-                        // it would be way too inefficient 
-                    }
-                }
+                Collect(ren, _edges, _colors, _uvs);
             }
 
-            if (indices == null || indices.Length != edges.Count) {
-                indices = new int[edges.Count];
+            if (_indices == null || _indices.Length != _edges.Count)
+            {
+                _indices = new int[_edges.Count];
             }
 
-            for (int i = 0; i < edges.Count; i++) { indices[i] = i; }
+            for (int i = 0; i < _edges.Count; i++)
+            {
+                _indices[i] = i;
+            }
 
-            mesh.SetVertices(edges);
+            mesh.SetVertices(_edges);
             // mesh.SetNormals();
-            mesh.SetColors(colors);
-            mesh.SetUVs(0, uvs);
-            mesh.SetIndices(indices, MeshTopology.Lines, 0);
+            mesh.SetColors(_colors);
+            mesh.SetUVs(0, _uvs);
+            mesh.SetIndices(_indices, MeshTopology.Lines, 0);
         }
 
+        //-------------------------------------------------------------------------------------
+        //                                Helper Methods      
+        //-------------------------------------------------------------------------------------
+        
+        private static void Collect(Renderer ren, List<Vector3> edges, List<Color> colors, List<Vector2> uvs)
+        {
+            switch (ren)
+            {
+                case SpriteRenderer spriteRenderer:
+                    Update_SpriteRenderer(spriteRenderer, edges, colors, uvs);
+                    break;
+                case TilemapRenderer tilemapRenderer:
+                {
+                    var collider = tilemapRenderer.GetComponent<TilemapCollider2D>();
+
+                    if (collider != null)
+                    {
+                        if (collider.usedByComposite)
+                        {
+                            Update_CompositeCollider(tilemapRenderer, collider.composite,  edges, colors, uvs);
+                        }/*
+                        else
+                        {
+                            // todo: support for tilemaps without composite collider
+                            // but it would be way too inefficient ... so its just not supported at this time 
+                        }*/
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        private static void AddEdge(int i, int k, byte layer, Transform transform, List<Vector2> shape,
+            List<Vector3> edges, List<Color> colors, List<Vector2> uvs)
+        {
+            edges.Add(transform.TransformPoint(shape[i]));
+            edges.Add(transform.TransformPoint(shape[k]));
+
+            uvs.Add(transform.TransformPoint(shape[k]));
+            uvs.Add(transform.TransformPoint(shape[i]));
+
+            colors.Add(new Color(layer, 0, 0, 0));
+            colors.Add(new Color(layer, 0, 0, 0));
+        }
+        
+
+        //-------------------------------------------------------------------------------------
+        //                       Supported Renderer-Types Specific Implementations
+        //-------------------------------------------------------------------------------------
+        
         #region ProcessDifferentRenderers
 
-        private static void Update_SpriteRenderer(SpriteRenderer ren, List<Vector3> edges, List<Color> colors, List<Vector2> uvs) {
+        private static void Update_SpriteRenderer(SpriteRenderer ren, List<Vector3> edges, List<Color> colors,
+            List<Vector2> uvs)
+        {
             byte layer = (byte) ren.gameObject.layer;
             var transform = ren.transform;
             if (ren.sprite == null) return;
 
-            for (int shape_i = 0; shape_i < ren.sprite.GetPhysicsShapeCount(); ++shape_i) {
-                var shape = new List<Vector2>(ren.sprite.GetPhysicsShapePointCount(shape_i));
-                ren.sprite.GetPhysicsShape(shape_i, shape);
+            if (_physicShape == null)
+            {
+                _physicShape = new List<Vector2>(32);
+            }
 
-                for (int i = 0; i < shape.Count; ++i) {
-                    var k = (i + 1) % shape.Count;
-                    edges.Add(transform.TransformPoint(shape[i]));
-                    edges.Add(transform.TransformPoint(shape[k])); // this ...
+            for (int shapeIdx = 0; shapeIdx < ren.sprite.GetPhysicsShapeCount(); ++shapeIdx)
+            {
+                _physicShape.Clear();
+                ren.sprite.GetPhysicsShape(shapeIdx, _physicShape);
 
-                    uvs.Add(transform.TransformPoint(shape[k]));
-                    uvs.Add(transform.TransformPoint(shape[i])); // ... this ...
+                for (int i = 0; i < _physicShape.Count; ++i)
+                {
+                    var k = (i + 1) % _physicShape.Count;
 
-                    colors.Add(new Color32(layer, 0, 0, 1));
-                    colors.Add(new Color32(layer, 0, 0, 1)); //... and this, seem redundant
+                    AddEdge(i, k, layer, transform, _physicShape, edges, colors, uvs);
                 }
             }
         }
 
-        private static void Update_CompositeCollider(TilemapRenderer ren, CompositeCollider2D collider, List<Vector3> edges, List<Color> colors, List<Vector2> uvs) {
+        private static void Update_CompositeCollider(TilemapRenderer ren, CompositeCollider2D collider,
+            List<Vector3> edges, List<Color> colors, List<Vector2> uvs)
+        {
             byte layer = (byte) ren.gameObject.layer;
             var transform = ren.transform;
 
-            for (int pathIdx = 0; pathIdx < collider.pathCount; ++pathIdx) {
-                var pointCount = collider.GetPathPointCount(pathIdx);
-                var _shape = new Vector2[pointCount];
-                collider.GetPath(pathIdx, _shape);
-                var shape = (IList) _shape;
+            if (_physicShape == null)
+            {
+                _physicShape = new List<Vector2>(32);
+            }
 
-                for (int i = 0; i < pointCount; ++i) {
+            for (int pathIdx = 0; pathIdx < collider.pathCount; ++pathIdx)
+            {
+                var pointCount = collider.GetPathPointCount(pathIdx);
+                collider.GetPath(pathIdx, _physicShape);
+                for (int i = 0; i < pointCount; ++i)
+                {
                     var k = (i + 1) % pointCount;
-                    AddEdge(i, k, layer, transform, ref shape, edges, colors, uvs);
+                    AddEdge(i, k, layer, transform, _physicShape, edges, colors, uvs);
                 }
             }
         }
 
         #endregion
 
-        private static void AddEdge(int i, int k, byte layer, Transform transform, ref IList shape, List<Vector3> edges, List<Color> colors, List<Vector2> uvs) {
-            edges.Add(transform.TransformPoint((Vector2) shape[i]));
-            edges.Add(transform.TransformPoint((Vector2) shape[k])); // this ...
 
-            uvs.Add(transform.TransformPoint((Vector2) shape[k]));
-            uvs.Add(transform.TransformPoint((Vector2) shape[i])); // ... this ...
-
-            colors.Add(new Color(layer, 0, 0, 0));
-            colors.Add(new Color(layer, 0, 0, 0));
-        }
     }
 }
