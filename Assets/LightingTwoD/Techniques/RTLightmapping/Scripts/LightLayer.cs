@@ -1,20 +1,18 @@
-using UnityEngine;
 using LightingTwoD.Core;
-using UnityEngine.Profiling;
+using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Experimental.Rendering;
 using Resolution = LightingTwoD.Core.Resolution;
 
 namespace LightingTwoD.Techniques.RTLightmapping {
     
     [ExecuteInEditMode]
     [RequireComponent(typeof(Camera))]
-    public class LightLayer : UnityEngine.MonoBehaviour {
+    public class LightLayer : MonoBehaviour {
         //-------------------------------------------------------------------------------------
         //                                      Serializable Variables
         //-------------------------------------------------------------------------------------
-        [SerializeField] private Resolution maxShadowCastingLights = Resolution._64;
-        [SerializeField] private Resolution lightmapResolution = Resolution._512;
+        [SerializeField] private Resolution _maxShadowCastingLights = Resolution._64;
+        [SerializeField] private Resolution _lightmapResolution = Resolution._512;
         
         //-------------------------------------------------------------------------------------
         //                                      Variables/Properties
@@ -60,7 +58,7 @@ namespace LightingTwoD.Techniques.RTLightmapping {
 
             int slot = 0;
             foreach (var light2D in Light2D_LM.Lights) {
-                var properties = light2D.GetMaterialProperties(slot, (int)maxShadowCastingLights, _shadowMapFinalTexture);
+                var properties = light2D.GetMaterialProperties(slot, (int)_maxShadowCastingLights, _shadowMapFinalTexture);
 
                 int shaderPass = light2D.LightType == Light2D.Light2DType.Line ? 2 : 0; 
                 
@@ -68,13 +66,15 @@ namespace LightingTwoD.Techniques.RTLightmapping {
                 
                 
                 ++slot;
-                if (slot >= (int)maxShadowCastingLights) break;
+                if (slot >= (int)_maxShadowCastingLights) break;
             }
 
             _buffer.SetRenderTarget(_shadowMapFinalTexture);
             _buffer.ClearRenderTarget(true, true, Color.white, 1.0f);
             _buffer.SetGlobalTexture("_MainTex", _shadowMapInitialTexture);
             _buffer.Blit(_shadowMapInitialTexture, _shadowMapFinalTexture, _material, 1);
+            
+            if(!Application.isPlaying) Graphics.ExecuteCommandBuffer(_buffer);
         }
         
         //-------------------------------------------------------------------------------------
@@ -86,8 +86,8 @@ namespace LightingTwoD.Techniques.RTLightmapping {
             _buffer = new CommandBuffer();
             _camera = GetComponent<Camera>();
             
-            _shadowMapInitialTexture = new RenderTexture((int)lightmapResolution, (int)maxShadowCastingLights, 0, RenderTextureFormat.RFloat);
-            _shadowMapFinalTexture = new RenderTexture((int)lightmapResolution,(int)maxShadowCastingLights, 0, RenderTextureFormat.RFloat);
+            _shadowMapInitialTexture = new RenderTexture((int)_lightmapResolution, (int)_maxShadowCastingLights, 0, RenderTextureFormat.RFloat);
+            _shadowMapFinalTexture = new RenderTexture((int)_lightmapResolution,(int)_maxShadowCastingLights, 0, RenderTextureFormat.RFloat);
 
             _material = new Material(Shader.Find("Soraphis/RTLM/Mapping"));
             
