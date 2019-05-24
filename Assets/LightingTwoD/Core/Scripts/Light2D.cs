@@ -21,9 +21,6 @@ namespace LightingTwoD.Core {
         //-------------------------------------------------------------------------------------
         //                                      Static/Constants
         //-------------------------------------------------------------------------------------
-        
-        private static CullingGroup _cullingGroup;
-        private static BoundingSphere[] _boundingSpheres;
 
         //-------------------------------------------------------------------------------------
         //                                      Serializable Variables
@@ -43,8 +40,6 @@ namespace LightingTwoD.Core {
         //-------------------------------------------------------------------------------------
         //                                      Variables/Properties
         //-------------------------------------------------------------------------------------
-        private int _lightCullingIndex = -1;
-
         public Light2DType LightType => _lightType;
         public float Range => _range;
         public float SpotAngle => _spotAngle;
@@ -61,6 +56,7 @@ namespace LightingTwoD.Core {
 
         protected virtual void OnValidate() {
             _2DOrientation = Tilemap.Orientation.XY; // fixme: others currently not supported
+            _range = Mathf.Max(0, _range);
         }
 
         //-------------------------------------------------------------------------------------
@@ -78,9 +74,7 @@ namespace LightingTwoD.Core {
             return new Vector4(transform.position.x, transform.position.y, angle, 360 * Mathf.Deg2Rad * 0.5f); 
         }
 
-        public bool IsLightVisible() {
-            return _cullingGroup == null || _cullingGroup.IsVisible(_lightCullingIndex);
-        }
+        public abstract bool IsLightVisible(); 
         
         private BoundingSphere GetBoundingSphere() {
             var position = transform.position;
@@ -93,32 +87,6 @@ namespace LightingTwoD.Core {
             
             throw new NotImplementedException();
         }
-        
-        //-------------------------------------------------------------------------------------
-        //                                      Static Functions
-        //-------------------------------------------------------------------------------------
-
-        /*internal static void SetupCulling(Camera camera) {
-            if(_cullingGroup == null) return;
-            _cullingGroup.targetCamera = camera;
-         
-            if(_boundingSpheres == null || Lights.Count > _boundingSpheres.Length)
-                _boundingSpheres = new BoundingSphere[Mathf.CeilToInt(Lights.Count/1024f) * 1024];
-
-            int currentCullingIndex = 0;
-            for (var lightIndex = 0; lightIndex < Lights.Count; lightIndex++) {
-                Light2D light = Lights[lightIndex];
-                if(light == null) continue;
-
-                _boundingSpheres[lightIndex] = light.GetBoundingSphere();
-                light._lightCullingIndex = currentCullingIndex++;
-
-            }
-                
-            _cullingGroup.SetBoundingSpheres(_boundingSpheres);
-            _cullingGroup.SetBoundingSphereCount(currentCullingIndex);
-            
-        }*/
         
         protected virtual void OnDrawGizmos()
         {

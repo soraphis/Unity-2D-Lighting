@@ -55,7 +55,8 @@ float4 PassFragment(VertexOutput input) : SV_Target{
     float2 polar = ToPolar(worldPos, _LightPosition.xy);
     float shadowAttenuation = SampleShadowTexture(_ShadowTex, polar.x, _ShadowMapParams.x) * _LightAttenuation.y; 
     shadowAttenuation = shadowAttenuation - polar.y;
-    clip(shadowAttenuation);
+    shadowAttenuation = saturate(shadowAttenuation + step(0.00390625f, shadowAttenuation) * 1);    
+    //clip(shadowAttenuation);
     
     float rangeFade = polar.y * polar.y * _LightAttenuation.x;
     rangeFade = saturate(1 - rangeFade);
@@ -66,7 +67,7 @@ float4 PassFragment(VertexOutput input) : SV_Target{
     
     float distanceSqr = max(1 + polar.y * polar.y, 0.00001);
     
-    float diffuse = spotFade * rangeFade / distanceSqr;
+    float diffuse = shadowAttenuation * spotFade * rangeFade / distanceSqr;
     
     
     

@@ -40,11 +40,11 @@ namespace LightingTwoD.Techniques.RTLightmapping {
 
         private void OnEnable() {
             if(!Application.isPlaying && _buffer == null) Init(); // possible in EditMode
-            _camera.AddCommandBuffer(CameraEvent.BeforeForwardOpaque, _buffer);
+            //_camera.AddCommandBuffer(CameraEvent.BeforeDepthTexture, _buffer);
         }
 
         private void OnDisable() {
-            _camera.RemoveCommandBuffer(CameraEvent.BeforeForwardOpaque, _buffer);
+            //_camera.RemoveCommandBuffer(CameraEvent.BeforeDepthTexture, _buffer);
         }
 
         private void LateUpdate() {
@@ -73,8 +73,10 @@ namespace LightingTwoD.Techniques.RTLightmapping {
             _buffer.ClearRenderTarget(true, true, Color.white, 1.0f);
             _buffer.SetGlobalTexture("_MainTex", _shadowMapInitialTexture);
             _buffer.Blit(_shadowMapInitialTexture, _shadowMapFinalTexture, _material, 1);
+            _buffer.SetGlobalTexture("_ShadowTex", _shadowMapFinalTexture);
             
-            if(!Application.isPlaying) Graphics.ExecuteCommandBuffer(_buffer);
+            //if(!Application.isPlaying) 
+            Graphics.ExecuteCommandBuffer(_buffer);
         }
         
         //-------------------------------------------------------------------------------------

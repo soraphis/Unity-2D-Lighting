@@ -1,4 +1,4 @@
-Shader "Soraphis/RTLM/Mapping"
+Shader "Soraphis/Pipeline/Mapping"
 {
 	SubShader
 	{
@@ -33,21 +33,6 @@ Shader "Soraphis/RTLM/Mapping"
 			#pragma fragment PassFragment
 			
 			#include "./Refit.hlsl"
-			
-			ENDHLSL
-        }
-        
-        
-        Pass // Mapping line
-        {
-            HLSLPROGRAM
-			
-			#pragma target 3.5
-			
-			#pragma vertex LinePassVertex
-			#pragma fragment LinePassFragment
-			
-			#include "./Mapping.hlsl"
 			
 			ENDHLSL
         }

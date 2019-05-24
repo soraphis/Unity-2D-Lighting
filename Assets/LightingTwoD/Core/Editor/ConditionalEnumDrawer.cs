@@ -19,6 +19,13 @@ namespace LightingTwoD.Core.Editor
                 return;
             }
 
+            if (property.serializedObject.isEditingMultipleObjects)
+            {
+                EditorGUI.HelpBox(position, label.text  + " MultiEdit not supported", MessageType.Info);
+                return;
+            }
+            
+            
             if(checkMethod == null)
             {
                 var o = property.serializedObject.targetObject;
@@ -43,7 +50,10 @@ namespace LightingTwoD.Core.Editor
             }
             
             var enumValue = (Enum)Enum.Parse(fieldInfo.FieldType, property.enumNames[property.enumValueIndex]);
-            property.enumValueIndex = (int)(object)EditorGUI.EnumPopup(position, label, enumValue, checkMethod);
+            
+            var newEnum = (object)EditorGUI.EnumPopup(position, label, enumValue, checkMethod);
+            var index = Array.IndexOf(property.enumNames, Enum.GetName(fieldInfo.FieldType, newEnum));
+            property.enumValueIndex = index;
         }
     }
 }

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using LightingTwoD.Core;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace LightingTwoD.Techniques.RTLightmapping {
     [ExecuteInEditMode]
-    public class Light2D_LM : Light2D<Light2D_LM> {
+    public sealed class Light2D_LM : Light2D<Light2D_LM> {
         //-------------------------------------------------------------------------------------
         //                                      Serializable Variables
         //-------------------------------------------------------------------------------------
@@ -86,6 +85,11 @@ namespace LightingTwoD.Techniques.RTLightmapping {
             return allowed.Contains(type);
         }
 
+        public override bool IsLightVisible()
+        {
+            return true;
+        }
+        
         
         public MaterialPropertyBlock GetMaterialProperties(int slot, int maxSlots, Texture shadowMap) {
             if(_propertyBlock == null) Init(); // can happen in edit mode

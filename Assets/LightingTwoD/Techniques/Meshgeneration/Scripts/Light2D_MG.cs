@@ -270,7 +270,9 @@ public class Light2D_MG : Light2D<Light2D_MG>
         Light2DType[] allowed = {Light2DType.Point , Light2DType.Spot, /*Light2DType.Line*/};
         return allowed.Contains(type);
     }
-    
-    
-    
+
+    public override bool IsLightVisible()
+    {
+        return true;
+    }
 }
