@@ -199,7 +199,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &132674849
+--- !u!1 &55485289
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,46 +207,32 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 132674850}
-  - component: {fileID: 132674852}
+  - component: {fileID: 55485291}
+  - component: {fileID: 55485290}
   m_Layer: 0
-  m_Name: PxLight
+  m_Name: PxLight G3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &132674850
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132674849}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.47, y: 0.86, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &132674852
+--- !u!114 &55485290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132674849}
+  m_GameObject: {fileID: 55485289}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _lightType: 2
-  _range: 2
+  _range: 10
   _spotAngle: 89.7
   _intensity: 1
-  _color: {r: 0.7028302, g: 0.96233064, b: 1, a: 1}
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
   _2DOrientation: 0
   cullingMask:
     serializedVersion: 2
@@ -254,6 +240,240 @@ MonoBehaviour:
   lineLength: 0
   _orderInLayer: 0
   _sortingLayer: 0
+--- !u!4 &55485291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55485289}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -0.79, y: 2.6600003, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &220328486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220328488}
+  - component: {fileID: 220328487}
+  m_Layer: 0
+  m_Name: PxLight G3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &220328487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220328486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &220328488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220328486}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -2.71, y: 2.6600003, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &309329581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309329583}
+  - component: {fileID: 309329582}
+  m_Layer: 0
+  m_Name: PxLight G4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &309329582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309329581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.04705882, g: 0.10724008, b: 0.7372549, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &309329583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309329581}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -0.79, y: 4.86, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &442086171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442086173}
+  - component: {fileID: 442086172}
+  m_Layer: 0
+  m_Name: PxLight G2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &442086172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442086171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &442086173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442086171}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 7.1000004, y: 0.2800002, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &507310419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507310421}
+  - component: {fileID: 507310420}
+  m_Layer: 0
+  m_Name: PxLight G1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &507310420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507310419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &507310421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507310419}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -3.61, y: 0.31, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +486,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -293,8 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b7dfc6f1d239b4caecdb33b03df564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxShadowCastingLights: 16
-  _lightmapResolution: 512
+  _maxShadowCastingLights: 128
+  _lightmapResolution: 2048
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -350,8 +571,295 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445a382305df9a546b0ab98e4bcf3b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &544412655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544412657}
+  - component: {fileID: 544412656}
+  m_Layer: 0
+  m_Name: PxLight G4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &544412656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544412655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.04705882, g: 0.10724008, b: 0.7372549, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &544412657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544412655}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 2.8999999, y: 4.89, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &598432848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598432850}
+  - component: {fileID: 598432849}
+  m_Layer: 0
+  m_Name: PxLight G4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &598432849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598432848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.04705882, g: 0.10724008, b: 0.7372549, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &598432850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598432848}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -2.71, y: 4.86, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &602495944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602495946}
+  - component: {fileID: 602495945}
+  m_Layer: 0
+  m_Name: PxLight G4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &602495945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602495944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.04705882, g: 0.10724008, b: 0.7372549, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &602495946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602495944}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 1.1999998, y: 4.89, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &638944741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638944743}
+  - component: {fileID: 638944742}
+  m_Layer: 0
+  m_Name: PxLight G2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &638944742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638944741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &638944743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638944741}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 5.1800003, y: 0.2800002, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &648960155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648960157}
+  - component: {fileID: 648960156}
+  m_Layer: 0
+  m_Name: PxLight G1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &648960156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648960155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &648960157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648960155}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -7.299999, y: 0.2800002, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
 --- !u!1 &743689408
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +1016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22451668, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -540,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22451668, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 22451668, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -638,6 +1146,61 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+--- !u!1 &968075322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968075324}
+  - component: {fileID: 968075323}
+  m_Layer: 0
+  m_Name: PxLight G2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &968075323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968075322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &968075324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968075322}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 9.09, y: 0.30999994, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
 --- !u!1 &1109965470
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +1212,7 @@ GameObject:
   - component: {fileID: 1109965472}
   - component: {fileID: 1109965471}
   m_Layer: 0
-  m_Name: PxLight (5)
+  m_Name: PxLight G6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,7 +1267,7 @@ GameObject:
   - component: {fileID: 1294294370}
   - component: {fileID: 1294294369}
   m_Layer: 0
-  m_Name: PxLight (6)
+  m_Name: PxLight G5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,7 +1305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294294368}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -2.87, y: -6.59, z: 0}
+  m_LocalPosition: {x: -3.23, y: -6.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -759,7 +1322,7 @@ GameObject:
   - component: {fileID: 1597939413}
   - component: {fileID: 1597939412}
   m_Layer: 0
-  m_Name: PxLight (7)
+  m_Name: PxLight G6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -803,6 +1366,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &1632611624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1632611626}
+  - component: {fileID: 1632611625}
+  m_Layer: 0
+  m_Name: PxLight G3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1632611625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632611624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &1632611626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632611624}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 1.1999998, y: 2.69, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
 --- !u!1 &1712195780
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +1432,7 @@ GameObject:
   - component: {fileID: 1712195782}
   - component: {fileID: 1712195781}
   m_Layer: 0
-  m_Name: PxLight (2)
+  m_Name: PxLight G6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1005,7 +1623,7 @@ GameObject:
   - component: {fileID: 1789538114}
   - component: {fileID: 1789538113}
   m_Layer: 0
-  m_Name: PxLight (10)
+  m_Name: PxLight G5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,7 +1661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789538112}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 7.13, y: -6.59, z: 0}
+  m_LocalPosition: {x: 6.77, y: -6.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1139,7 +1757,7 @@ GameObject:
   - component: {fileID: 1820681935}
   - component: {fileID: 1820681934}
   m_Layer: 0
-  m_Name: PxLight (9)
+  m_Name: PxLight G5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,7 +1812,7 @@ GameObject:
   - component: {fileID: 1825023681}
   - component: {fileID: 1825023680}
   m_Layer: 0
-  m_Name: PxLight (3)
+  m_Name: PxLight G6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,6 +1856,171 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
+--- !u!1 &1901687356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901687358}
+  - component: {fileID: 1901687357}
+  m_Layer: 0
+  m_Name: PxLight G3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1901687357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901687356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &1901687358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901687356}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 2.8999999, y: 2.69, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &1934493436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934493438}
+  - component: {fileID: 1934493437}
+  m_Layer: 0
+  m_Name: PxLight G2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1934493437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934493436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &1934493438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934493436}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: 10.79, y: 0.31, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
+--- !u!1 &1948254628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948254630}
+  - component: {fileID: 1948254629}
+  m_Layer: 0
+  m_Name: PxLight G1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1948254629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948254628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &1948254630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948254628}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -9.219999, y: 0.2800002, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}
 --- !u!1 &1975972787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +2032,7 @@ GameObject:
   - component: {fileID: 1975972789}
   - component: {fileID: 1975972788}
   m_Layer: 0
-  m_Name: PxLight (8)
+  m_Name: PxLight G5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,3 +2182,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &2037450984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037450986}
+  - component: {fileID: 2037450985}
+  m_Layer: 0
+  m_Name: PxLight G1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2037450985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037450984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1cd6a678a24e42adf108076bb3f088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lightType: 2
+  _range: 10
+  _spotAngle: 89.7
+  _intensity: 1
+  _color: {r: 0.7372549, g: 0.1381129, b: 0.04705882, a: 1}
+  _2DOrientation: 0
+  cullingMask:
+    serializedVersion: 2
+    m_Bits: 65535
+  lineLength: 0
+  _orderInLayer: 0
+  _sortingLayer: 0
+--- !u!4 &2037450986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037450984}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7955295, w: 0.60591483}
+  m_LocalPosition: {x: -5.3099995, y: 0.30999994, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.411}

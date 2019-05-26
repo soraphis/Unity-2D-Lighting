@@ -193,12 +193,10 @@ public class Light2D_MG : Light2D<Light2D_MG>
                 SmoothCircle(pA, pB);
             }else{
                 var f = GeneratePoint(q1 * dir);
-                if (f < 0.999) {
-                    SmoothCircle(pA, pB);
-                    continue;
-                }    
+                bool b = f < 0.999;
                 f = GeneratePoint(q2 * dir);
-                if (f < 0.999) {
+                b |= f < 0.999;
+                if (b) {
                     SmoothCircle(pA, pB);
                 }    
             }
